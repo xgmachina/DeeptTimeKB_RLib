@@ -32,9 +32,9 @@ gts.topo = function(geoConcept1, geoConcept2,
     }
   }
   if(res1[1]==res2[1]){
-    if(res1[2]>res2[2]) topo="time:intervalStarts"
+    if(res1[2]>res2[2]) topo="time:intervalStartedBy"
     if(res1[2]==res2[2]) topo="time:intervalEquals"
-    if(res1[2]<res2[2]) topo="time:intervalStartedBy"
+    if(res1[2]<res2[2]) topo="time:intervalStarts"
   }
   if(res1[1]<res2[1]){
     if(res1[1]>res2[2]){
