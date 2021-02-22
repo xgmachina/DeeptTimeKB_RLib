@@ -37,25 +37,32 @@ gts.point = function(time, prefix = NULL, graph = NULL){
                 ', graph, '
                  {
                  {
-                 ?geoConcept rdfs:label ?label ;
-                    dc:description
-                    [
-                    time:hasBeginning ?beg ;
-                    time:hasEnd ?end 
-                    ] .
-                 ?beg time:inTemporalPosition ?begTime .
-                 ?end time:inTemporalPosition ?endTime .
-              
-                 ?begTime dc:description
-                    [
-                    time:numericPosition ?begTimeNum ;
-                    skos:inScheme ?schemeID 
-                    ] .
-                 ?endTime dc:description
-                    [
-                    time:numericPosition ?endTimeNum ;
-                    skos:inScheme ?schemeID 
-                    ] .
+
+                      
+                             ?geoConcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
+                             [time:hasBeginning ?beg ;
+                              skos:inScheme  ?schemeID].
+
+                              ?beg time:inTemporalPosition ?begTime .
+
+                              ?begTime dc:description
+                              [time:numericPosition ?begTimeNum ;
+                              skos:inScheme  ?schemeID].
+
+
+                             ?geoConcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
+                             [time:hasEnd ?end ;
+                              skos:inScheme  ?schemeID].
+
+                              ?end time:inTemporalPosition ?endTime .
+
+                              ?endTime dc:description
+                              [time:numericPosition ?endTimeNum ;
+                              skos:inScheme ?schemeID].
                   FILTER (?endTimeNum <= ', time, ')
                   FILTER (?begTimeNum >= ', time, ')
                   }
