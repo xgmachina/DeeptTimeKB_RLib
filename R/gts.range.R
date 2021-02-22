@@ -49,19 +49,30 @@ gts.range = function(geoConcept, region = NULL, iscVersion = NULL, prefix = NULL
                              }
                        UNION
                              {
-                             ?tconcept a gts:GeochronologicEra ;  
-                                       rdfs:label ?label .
                              FILTER (lang(?label) = "en")
-                             FILTER strstarts(?label, "', geoConcept, '").
-                             ?tconcept dc:description
+                             FILTER strstarts(?label, "', geoConcept, '").    
+                             
+                             ?tconcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
                              [time:hasBeginning ?beg ;
-                              time:hasEnd ?end ;
                               skos:inScheme  ?schemeID].
+
                               ?beg time:inTemporalPosition ?begTime .
-                              ?end time:inTemporalPosition ?endTime .
+
                               ?begTime dc:description
                               [time:numericPosition ?begTimeValue ;
                               skos:inScheme  ?schemeID].
+
+
+                             ?tconcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
+                             [time:hasEnd ?end ;
+                              skos:inScheme  ?schemeID].
+
+                              ?end time:inTemporalPosition ?endTime .
+
                               ?endTime dc:description
                               [time:numericPosition ?endTimeValue ;
                               skos:inScheme ?schemeID].
@@ -95,19 +106,30 @@ gts.range = function(geoConcept, region = NULL, iscVersion = NULL, prefix = NULL
                              }
                        UNION
                              {
-                             ?tconcept a gts:GeochronologicEra ;  
-                                       rdfs:label ?label .
                              FILTER (lang(?label) = "en")
-                             FILTER strstarts(?label, "', geoConcept, '").
-                             ?tconcept dc:description
+                             FILTER strstarts(?label, "', geoConcept, '").    
+                             
+                             ?tconcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
                              [time:hasBeginning ?beg ;
-                              time:hasEnd ?end ;
                               skos:inScheme  ?schemeID].
+
                               ?beg time:inTemporalPosition ?begTime .
-                              ?end time:inTemporalPosition ?endTime .
+
                               ?begTime dc:description
                               [time:numericPosition ?begTimeValue ;
                               skos:inScheme  ?schemeID].
+
+
+                             ?tconcept a gts:GeochronologicEra ; 
+                                       rdfs:label ?label ;
+                              dc:description
+                             [time:hasEnd ?end ;
+                              skos:inScheme  ?schemeID].
+
+                              ?end time:inTemporalPosition ?endTime .
+
                               ?endTime dc:description
                               [time:numericPosition ?endTimeValue ;
                               skos:inScheme ?schemeID].
