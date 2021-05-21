@@ -22,28 +22,28 @@ gts.topo = function(geoConcept1, geoConcept2,
   if(nrow(res1)>1) stop("Please specify region and/or iscVersion of geoConcept1 to make sure gts.range(geoConcept1) has one retured result")
   if(nrow(res2)>1) stop("Please specify region and/or iscVersion of geoConcept2 to make sure gts.range(geoConcept2) has one retured result")
   
-  if(res1[1]>res2[1]){
-    if(res1[2]>res2[1]) topo="time:intervalBefore"
-    if(res1[2]==res2[1]) topo="time:intervalMeets"
-    if(res1[2]<res2[1]){
-      if(res1[2]>res2[2]) topo="time:intervalOverlaps"
-      if(res1[2]==res2[2]) topo="time:intervalFinishedBy"
-      if(res1[2]<res2[2]) topo="time:intervalContains"
+  if(res1[3]>res2[3]){
+    if(res1[4]>res2[3]) topo="time:intervalBefore"
+    if(res1[4]==res2[3]) topo="time:intervalMeets"
+    if(res1[4]<res2[3]){
+      if(res1[4]>res2[4]) topo="time:intervalOverlaps"
+      if(res1[4]==res2[4]) topo="time:intervalFinishedBy"
+      if(res1[4]<res2[4]) topo="time:intervalContains"
     }
   }
-  if(res1[1]==res2[1]){
-    if(res1[2]>res2[2]) topo="time:intervalStartedBy"
-    if(res1[2]==res2[2]) topo="time:intervalEquals"
-    if(res1[2]<res2[2]) topo="time:intervalStarts"
+  if(res1[3]==res2[3]){
+    if(res1[4]>res2[4]) topo="time:intervalStartedBy"
+    if(res1[4]==res2[4]) topo="time:intervalEquals"
+    if(res1[4]<res2[4]) topo="time:intervalStarts"
   }
-  if(res1[1]<res2[1]){
-    if(res1[1]>res2[2]){
-      if(res1[2]>res2[2]) topo="time:intervalDuring"
-      if(res1[2]==res2[2]) topo="time:intervalFinishes"
-      if(res1[2]<res2[2]) topo="time:intervalOverlappedBy"
+  if(res1[3]<res2[3]){
+    if(res1[3]>res2[4]){
+      if(res1[4]>res2[4]) topo="time:intervalDuring"
+      if(res1[4]==res2[4]) topo="time:intervalFinishes"
+      if(res1[4]<res2[4]) topo="time:intervalOverlappedBy"
     }
-    if(res1[1]==res2[2]) topo="time:intervalMetBy"
-    if(res1[1]<res2[2]) topo="time:intervalAfter"
+    if(res1[3]==res2[4]) topo="time:intervalMetBy"
+    if(res1[3]<res2[4]) topo="time:intervalAfter"
   }
   
   cat("#### RESULT ####\n")
